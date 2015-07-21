@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<declare-styleable name="CoverFlowPager">
+		<attr name="visibleIndex" format="integer"/>
+        <attr name="listSpacing" format="dimension" />
+        <attr name="rotateFactor" format="float"/>
+        <attr name="rotateLimit" format="float"/>
+		<attr name="alphaFactor" format="float"/>
+		<attr name="scaleFactor" format="float"/>
+		<attr name="gravityFactor" format="float"/>
+		<attr name="listRadius" format="float" />
+	</declare-styleable>
+
+</resources>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:CoverFlowPager="http://schemas.android.com/apk/res/com.github.hongchae.coverflow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <com.github.hongchae.coverflow.lib.CoverFlowContainer
+            android:id="@+id/pager_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <com.github.hongchae.coverflow.lib.VelocityViewPager
+                android:layout_width="150dp"
+                android:layout_height="225dp"
+                android:layout_gravity="center"
+                CoverFlowPager:listSpacing="10dp"
+                CoverFlowPager:rotateFactor="20.0"
+                CoverFlowPager:rotateLimit="80.0"
+                CoverFlowPager:scaleFactor="0.2"
+                CoverFlowPager:alphaFactor="0.3"
+                CoverFlowPager:gravityFactor="-5.0"
+                CoverFlowPager:listRadius="2.0"
+                />
+    </com.github.hongchae.coverflow.lib.CoverFlowContainer>
+
+
+    <TextView android:id="@+id/selectedTitle"
+              android:layout_width="match_parent" android:layout_height="wrap_content"
+              android:textSize="30sp" android:textColor="#FFF"
+              android:gravity="center"
+              android:layout_marginBottom="20dp"
+              android:layout_alignParentBottom="true"/>
+</RelativeLayout>
