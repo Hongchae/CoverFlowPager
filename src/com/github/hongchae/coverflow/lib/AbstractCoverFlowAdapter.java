@@ -38,7 +38,7 @@ public class AbstractCoverFlowAdapter<T> extends PagerAdapter {
         final int w = original.getWidth();
         final int h = original.getHeight();
         final int rh = (h / 2);
-        final int gradientColor = Color.argb(0x33, 0xff, 0xff, 0xff);
+        final int gradientColor = Color.argb(0x66, 0xff, 0xff, 0xff);
 
         Matrix matrix = new Matrix();
         matrix.preScale(1, -1);

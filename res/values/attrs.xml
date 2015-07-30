@@ -4,6 +4,7 @@
 	<declare-styleable name="CoverFlowPager">
 		<attr name="visibleIndex" format="integer"/>
         <attr name="listSpacing" format="dimension" />
+		<attr name="selectedSpacing" format="dimension" />
         <attr name="rotateFactor" format="float"/>
         <attr name="rotateLimit" format="float"/>
 		<attr name="alphaFactor" format="float"/>

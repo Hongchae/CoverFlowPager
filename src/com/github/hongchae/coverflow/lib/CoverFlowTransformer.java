@@ -12,6 +12,7 @@ public class CoverFlowTransformer implements ViewPager.PageTransformer {
     private static final float MIN_ALPHA = 0.3f;
     private int visibleIndex;
     private int spacing;
+    private int selectedSpacing;
     private float rotateFactor;
     private float rotateLimit;
     private float alphaFactor;
@@ -22,6 +23,7 @@ public class CoverFlowTransformer implements ViewPager.PageTransformer {
     public CoverFlowTransformer(Context context, AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CoverFlowPager, 0, 0);
         spacing = typedArray.getDimensionPixelSize(R.styleable.CoverFlowPager_listSpacing, 0);
+        selectedSpacing = typedArray.getDimensionPixelSize(R.styleable.CoverFlowPager_selectedSpacing, 0);
         visibleIndex = typedArray.getInt(R.styleable.CoverFlowPager_visibleIndex, 4);
         rotateFactor = typedArray.getFloat(R.styleable.CoverFlowPager_rotateFactor, 0f);
         rotateLimit = typedArray.getFloat(R.styleable.CoverFlowPager_rotateLimit, 0f);
@@ -41,27 +43,32 @@ public class CoverFlowTransformer implements ViewPager.PageTransformer {
         } else {
             view.setVisibility(View.VISIBLE);
 
-            if(rotateFactor != 0f) {
+            if (rotateFactor != 0f) {
                 float rotateAngle = Math.min(rotateLimit, Math.abs(position * rotateFactor));
                 view.setRotationY((position < 0) ? rotateAngle : -rotateAngle);
             }
 
-            if(spacing != 0f) {
-                float hMargin = position * position * spacing;
-                view.setTranslationX((position < 0) ? hMargin : -hMargin);
+            if (spacing != 0) {
+                float hMargin = position * (spacing);
+                if (selectedSpacing != 0) {
+                    float ss = Math.min(selectedSpacing, Math.abs(position * selectedSpacing));
+                    hMargin += (position > 0) ? ss : -ss;
+                }
+                System.out.println(hMargin);
+                view.setTranslationX(hMargin);
             }
 
             float vMargin = position * position * gravityFactor / listRadius;
             view.setTranslationY(vMargin);
 
 
-            if(scaleFactor != 0f) {
+            if (scaleFactor != 0f) {
                 float scale = Math.max(MIN_SCALE, 1 - Math.abs(position * scaleFactor));
                 view.setScaleX(scale);
                 view.setScaleY(scale);
             }
 
-            if(alphaFactor != 0f) {
+            if (alphaFactor != 0f) {
                 view.setAlpha(Math.max(MIN_ALPHA, 1 - Math.abs(position * alphaFactor)));
             }
 
